@@ -73,7 +73,7 @@ const Form = () => {
     wf?: boolean;
     title?: string;
     item: number[];
-    notitle: boolean
+    notitle?: boolean
   }) => (
     <ContentOutline>
       {!notitle &&
