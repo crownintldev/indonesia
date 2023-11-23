@@ -18,26 +18,26 @@ const Header = () => {
                 />
 
             </div>
-            <div className='text-[7px] font-bold'>
-                <p className='space-x-1'>
+            <div className='text-[10px] font-bold'>
+                
+                <p className='space-x-'>
                     <span>Phone</span>
-                    <span>:92(51) 2832017-20</span>
+                    <span>
+:
+
+(92-21) 35874623, 35874619</span>
                 </p>
                 <p className='space-x-1'>
                     <span>Fax</span>
-                    <span>:92(51) 2832017-20</span>
+                    <span>:(92-21) 35874483</span>
                 </p>
                 <p className='space-x-1'>
-                    <span>Web</span>
-                    <span>:https://kemiu.go.id/islamabad</span>
-                </p>
-                <p className='space-x-1'>
-                    <span>Email</span>
-                    <span>:info@indonesian-embassy.pk</span>
+                    <span>Website</span>
+                    <span>:www.kemlu.go.id/karachi</span>
                 </p>
                 <p className='space-x-1'>
                     <span>Address</span>
-                    <span>:Diplomatic Enclave I, Street 5 <br /> G-5, Islamabad</span>
+                    <span>:E/1-5 Shahrah-E-Iran, Clifton Karachi</span>
                 </p>
             </div>
         </div>

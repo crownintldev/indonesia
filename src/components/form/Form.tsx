@@ -380,11 +380,10 @@ const Form = () => {
                 <Box b={12} />
               </Boxes>
             </ContentOutline>
-            <FullLineBox text="e-mail Address" />
             <MentionDashBoxes item={[2, 2, 4]} title="Date of Issue" />
             <MentionDashBoxes item={[2, 2, 4]} title="Date of Expire" />
             <MentionContainer
-              text="Occupation/Position"
+              text="Type of Passport"
               item={["Personal", "Family"]}
               space
             />
