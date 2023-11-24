@@ -154,8 +154,8 @@ const ContentOutline = ({ children }: { children: React.ReactNode }) => (
 );
 const Layout = ({ children }: { children: React.ReactNode }) => (
   <div className="w-[610px] mx-auto space-y-[1px] ">
-    <div className="border border-black pb-1">
-      <div className="w-[90%] h-16 mx-auto mt-8 relative">
+    <div className="border border-black pb-1 py-2">
+      <div className="ms-[2.5%] h-16 mx-auto  relative">
         <Header />
         <p className="absolute text-[10px] font-medium bottom-[1px]">NOREG</p>
       </div>
