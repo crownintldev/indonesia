@@ -1,375 +1,209 @@
 "use client";
 import React, { useState } from "react";
 import Box from "../Box/Box";
-import Header from "../header/Header";
-import CheckedBox from "../checkbox/CheckedBox";
+import {
+  Mention,
+  MentionContainer,
+  FullLineBox,
+  DashBoxes,
+  MentionDashBoxes,
+  Title,
+  HeadingItalic,
+  Heading,
+  Boxes,
+  ContentOutline,
+  Layout,
+} from "./function";
 
-const Form = () => {
-  // same page components start
-  const Mention = ({
-    component,
-    mention,
-  }: {
-    component: any;
-    mention: string;
-  }) => (
-    <div className="flex">
-      <div className="flex space-x-1 ">{component}</div>
-      <span className="ms-[1px] font-medium">{mention}</span>
-    </div>
-  );
-  const MentionContainer = ({
-    tspace,
-    text,
-    item,
-    space,
-    wf,
-  }: {
-    tspace?: boolean;
-    wf?: boolean;
-    text?: string;
-    item: string[];
-    space?: boolean;
-  }) => (
-    <ContentOutline>
-      <Title tspace={tspace && tspace}>{text}</Title>
-      <Boxes wf={wf}>
-        <p>:</p>
-        <div className={`w-full `}>
-          <div className={`flex ${space ? "space-x-4" : "justify-between"} `}>
-            {item.map((item: any, i: any) => (
-              <Mention key={i} component={<CheckedBox />} mention={item} />
-            ))}
+const page1 = () => {
+  return (
+    <div className="h-[940px] border border-black w-full ps-4 pt-1">
+      {/* ------------------top picture section------------------------------- */}
+      <>
+        {/* Date */}
+        <div className="flex justify-between">
+          <div className="flex flex-col space-y-2">
+            <div className="block">
+              <div className="flex space-x-6 ">
+                <ContentOutline>
+                  <div className="flex">
+                    <h2>Date</h2>
+                    <div className="flex items-center space-x-1">
+                      <p className="me-4 ms-2">:</p>
+                      {[2, 2, 4].map((quantity, i) => (
+                        <>
+                          <Box b={quantity} key={i} />
+                          {i !== [2, 2, 4].length - 1 && (
+                            <p className="text-center">-</p>
+                          )}
+                        </>
+                      ))}
+                    </div>
+                  </div>
+                </ContentOutline>
+                <span className="text-[10px] font-medium">(DD-MM-YYYY)</span>
+              </div>
+            </div>
+            {/* *********** */}
+            <Heading index={"I."} text="GENERAL" />
+            <ContentOutline>
+              <Title>Duration of Stay in Indonesia</Title>
+              <Boxes>
+                <p className="">:</p>
+                <Mention component={<Box b={2} />} mention="Day(s)" />
+                <div className="pr-2"></div>
+                <Mention component={<Box b={2} />} mention="Month(s)" />
+                <div className="pr-2"></div>
+                <Mention component={<Box b={2} />} mention="Year(s)" />
+              </Boxes>
+            </ContentOutline>
+
+            <MentionContainer
+              space
+              text="Type of Visa"
+              item={["Diplomatic", "Service/Official"]}
+            />
+            <MentionContainer space item={["Diplomatic", "Service/Official"]} />
+          </div>
+          {/* image */}
+          <div className="w-28 h-auto me-[14px]">
+            <div className="p-4 h-32 border border-gray-800"></div>
           </div>
         </div>
-      </Boxes>
-    </ContentOutline>
-  );
+      </>
+      {/* **********************pic section end************************************ */}
 
-  const FullLineBox = ({
-    text,
-    italic,
-  }: {
-    text: string;
-    italic?: boolean;
-  }) => (
-    <ContentOutline>
-      <Title>
-        <span className={`${italic && "italic"}`}>{text}</span>
-      </Title>
-      <Boxes wf>
-        <p>:</p>
-        <Box b={28} />
-      </Boxes>
-    </ContentOutline>
-  );
+      {/* --------For Transit Visa---------------- */}
+      <>
+        <HeadingItalic text="For Transit Visa" />
+        <FullLineBox text="Point of Departure" />
+        {/*  */}
+        <FullLineBox text="Place of Departure" />
+        {/*  */}
+        <FullLineBox text="Flight/Vessel Name" />
+      </>
+      {/* --------For Transit Visa End---------------- */}
 
-  const DashBoxes = ({
-    title,
-    item,
-    wf,
-    notitle,
-  }: {
-    wf?: boolean;
-    title?: string;
-    item: number[];
-    notitle?: boolean
-  }) => (
-    <ContentOutline>
-      {!notitle &&
-        <Title>{title}</Title>
-      }
-      <Boxes wf={wf}>
-        {!notitle && <p>:</p>}
-        {item.map((quantity, i) => (
-          <>
-            <Box b={quantity} key={i} />
-            {i !== item.length - 1 && <p>-</p>}
-          </>
-        ))}
-      </Boxes>
-    </ContentOutline>
-  );
-  const MentionDashBoxes = ({
-    title,
-    item,
-  }: {
-    title: string;
-    item: number[];
-  }) => (
-    <ContentOutline>
-      <Title>{title}</Title>
-      <Boxes wf>
-        <Mention
-          component={
-            <>
-              <p>:</p>
-              {item.map((quantity, i) => (
-                <>
-                  <Box b={quantity} key={i} />
-                  {i !== item.length - 1 && <p>-</p>}
-                </>
-              ))}
-            </>
-          }
-          mention="(DD-MM-YYYY)"
+      {/* --------For Visit Visa---------------- */}
+      <>
+        <HeadingItalic text="For Visit Visa" />
+        <MentionContainer
+          space
+          text="Purpose of Visit"
+          item={["Tourism", "Convention", "Family Visit", "Sports"]}
         />
-      </Boxes>
-    </ContentOutline>
-  );
-  // **--end same page components
-
-  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  // depends styles
-  const Title = ({
-    children,
-    tspace,
-  }: {
-    children: React.ReactNode;
-    tspace?: boolean;
-  }) => (
-    <div
-      className={`font-medium   ${tspace ? "w-[250px]" : "w-[150px]"}`}
-    >
-      <div>{children}</div>
-    </div>
-  );
-  const HeadingItalic = ({ text }: { text: string }) => (
-    <h4 className=" font-bold text-[9px] italic mt-1">{text}</h4>
-  );
-
-  const Heading = ({ index, text }: { index: string; text: string }) => (
-    <div className="flex relative uppercase items-center text-[9px] mt-1">
-      <span className="absolute -left-3 font-bold">{index}</span>
-      <h4 className=" font-bold  ">{text}</h4>
-    </div>
-  );
-  const Boxes = ({
-    children,
-    wf,
-  }: {
-    children: React.ReactNode;
-    wf?: boolean;
-  }) => (
-    //  320+128 = 328
-    <div>
-      <div className={``}>
-        <div className={`${wf ? "w-full" : " "} `}>
-          <div className="flex space-x-1 items-center">{children}</div>
+        <MentionContainer
+          space
+          item={["Study", "Arts", "Commercial", "Others"]}
+        />
+        <FullLineBox text="Flight /vessel's name" />
+        <FullLineBox text="Date & port of entry" />
+        <FullLineBox text="Place to visit" />
+      </>
+      {/* --------** End For Visit Visa---------------- */}
+      {/* --------For Limited Stay Visa---------------- */}
+      <>
+        <HeadingItalic text="For Limited Stay Visa" />
+        <MentionContainer
+          space
+          text="Purpose of Limited Stay"
+          item={["Work", "Join Family", "Social", "Others"]}
+        />
+        <FullLineBox text="Address in Indonesia" />
+        <FullLineBox text="City" />
+        <FullLineBox text="Province" />
+        <ContentOutline>
+          <Title>Phone Number</Title>
+          <Boxes wf>
+            <p>:</p>
+            <Box b={3} />
+            <p>-</p>
+            <Box b={3} />
+            <p>-</p>
+            <Box b={9} />
+          </Boxes>
+        </ContentOutline>
+        <FullLineBox text="Port of Entry into Indonesia" />
+        <MentionDashBoxes item={[2, 2, 4]} title="Date of Entry" />
+      </>
+      {/* --------** End For Limited Stay Visa ---------------- */}
+      {/* ************Heading PERSONAL DATA*********************** */}
+      <>
+        <Heading index={"II."} text="PERSONAL DATA" />
+        <FullLineBox text="Surname" />
+        <FullLineBox text="Given Name" />
+        <FullLineBox text="e-mail Address" />
+        <MentionContainer text="Sex" item={["Male", "Female"]} space />
+        {/*  */}
+        <MentionContainer
+          text="Marital Status"
+          item={["Married", "Single"]}
+          space
+        />
+        <FullLineBox text="Place of Birth" />
+        <MentionDashBoxes item={[2, 2, 4]} title="Date of Birth" />
+        <FullLineBox text="Nationality" />
+        <FullLineBox text="Home address in Pakistan" />
+        <FullLineBox text="City" />
+        <FullLineBox text="Province/State" />
+        <ContentOutline>
+          <Title>Mobile Phone Number</Title>
+          <Boxes>
+            <p>:</p>
+            <Box b={12} />
+          </Boxes>
+        </ContentOutline>
+        <MentionContainer
+          text="Occupation/Position"
+          item={[
+            "Professional",
+            "Government",
+            "Sales",
+            "Student",
+            "Housewife",
+            "Other",
+          ]}
+          space
+        />
+        <div className="w-full mb-1">
+          <ContentOutline>
+            <Title>Type of Business</Title>
+            <Boxes wf>
+              <p>:</p>
+              <input type="text" className="w-[420px] border-b border-black" />
+            </Boxes>
+          </ContentOutline>
         </div>
-      </div>
-    </div>
-  );
-  const ContentOutline = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex items-center text-[8px] space-y-[5px] leading-[10px]">
-      {children}
-    </div>
-  );
-  const Layout = ({ children }: { children: React.ReactNode }) => (
-    <div className="w-[610px] mx-auto space-y-[1px] ">
-      <div className="border border-black pb-1">
-        <div className="w-[90%] h-16 mx-auto mt-8 relative">
-          <Header />
-          <p className="absolute text-[10px] font-medium bottom-[1px]">NOREG</p>
+        <FullLineBox text="Name of Company" />
+        <div className="flex text-[8px] space-y-[2px] leading-[10px]">
+          <Title>Address in Pakistan</Title>
+
+          <div className="flex flex-col space-y-[2px]">
+            <Boxes>
+              <p>:</p>
+              <Box b={28} />
+            </Boxes>
+            <Boxes>
+              <p>&nbsp;</p>
+              <Box b={28} />
+            </Boxes>
+          </div>
         </div>
-      </div>
-      {/* line on header below */}
-
-      {/* <div className=" border border-gray-900 bg-gray-900 h-[1px] w-12/12 mx-auto"></div> */}
-
-      <div className=" w-full overflow-hidden ">{children}</div>
+        <FullLineBox text="City" />
+        <FullLineBox text="Province/State" />
+        <DashBoxes item={[2, 2, 8]} title="Phone Number" />
+      </>
+      {/* ************END Heading PERSONAL DATA*********************** */}
     </div>
   );
+};
+const Form = () => {
   // %%%%%%%%%%%%%%%%%main function%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   return (
     <Layout>
       <div className="w-full flex flex-col relative">
-        <div className="h-[940px] border border-black w-full ps-4 pt-1">
-          {/* ------------------top picture section------------------------------- */}
-          <>
-            {/* Date */}
-            <div className="flex justify-between">
-              <div className="flex flex-col space-y-2">
-                <div className="block">
-                  <div className="flex space-x-6 ">
-                    <ContentOutline>
-                      <div className="flex">
-                        <h2>Date</h2>
-                        <div className="flex items-center space-x-1">
-                          <p className="me-4 ms-2">:</p>
-                          {[2, 2, 4].map((quantity, i) => (
-                            <>
-                              <Box b={quantity} key={i} />
-                              {i !== [2, 2, 4].length - 1 && (
-                                <p className="text-center">-</p>
-                              )}
-                            </>
-                          ))}
-                        </div>
-                      </div>
-                    </ContentOutline>
-                    <span className="text-[10px] font-medium">(DD-MM-YYYY)</span>
-                  </div>
-                </div>
-                {/* *********** */}
-                <Heading index={"I."} text="GENERAL" />
-                <ContentOutline>
-                  <Title>Duration of Stay in Indonesia</Title>
-                  <Boxes>
-                    <p className="">:</p>
-                    <Mention component={<Box b={2} />} mention="Day(s)" />
-                    <div className="pr-2"></div>
-                    <Mention component={<Box b={2} />} mention="Month(s)" />
-                    <div className="pr-2"></div>
-                    <Mention component={<Box b={2} />} mention="Year(s)" />
-                  </Boxes>
-                </ContentOutline>
-
-                <MentionContainer
-                  space
-                  text="Type of Visa"
-                  item={["Diplomatic", "Service/Official"]}
-                />
-                <MentionContainer
-                  space
-                  item={["Diplomatic", "Service/Official"]}
-                />
-              </div>
-              {/* image */}
-              <div className="w-28 h-auto me-[14px]">
-                <div className="p-4 h-32 border border-gray-800"></div>
-              </div>
-            </div>
-          </>
-          {/* **********************pic section end************************************ */}
-
-
-          {/* --------For Transit Visa---------------- */}
-          <>
-            <HeadingItalic text="For Transit Visa" />
-            <FullLineBox text="Point of Departure" />
-            {/*  */}
-            <FullLineBox text="Place of Departure" />
-            {/*  */}
-            <FullLineBox text="Flight/Vessel Name" />
-          </>
-          {/* --------For Transit Visa End---------------- */}
-
-          {/* --------For Visit Visa---------------- */}
-          <>
-            <HeadingItalic text="For Visit Visa" />
-            <MentionContainer
-              space
-              text="Purpose of Visit"
-              item={["Tourism", "Convention", "Family Visit", "Sports"]}
-            />
-            <MentionContainer
-              space
-              item={["Study", "Arts", "Commercial", "Others"]}
-            />
-            <FullLineBox text="Flight /vessel's name" />
-            <FullLineBox text="Date & port of entry" />
-            <FullLineBox text="Place to visit" />
-          </>
-          {/* --------** End For Visit Visa---------------- */}
-          {/* --------For Limited Stay Visa---------------- */}
-          <>
-            <HeadingItalic text="For Limited Stay Visa" />
-            <MentionContainer
-              space
-              text="Purpose of Limited Stay"
-              item={["Work", "Join Family", "Social", "Others"]}
-            />
-            <FullLineBox text="Address in Indonesia" />
-            <FullLineBox text="City" />
-            <FullLineBox text="Province" />
-            <ContentOutline>
-              <Title>Phone Number</Title>
-              <Boxes wf>
-                <p>:</p>
-                <Box b={3} />
-                <p>-</p>
-                <Box b={3} />
-                <p>-</p>
-                <Box b={9} />
-              </Boxes>
-            </ContentOutline>
-            <FullLineBox text="Port of Entry into Indonesia" />
-            <MentionDashBoxes item={[2, 2, 4]} title="Date of Entry" />
-          </>
-          {/* --------** End For Limited Stay Visa ---------------- */}
-          {/* ************Heading PERSONAL DATA*********************** */}
-          <>
-            <Heading index={"II."} text="PERSONAL DATA" />
-            <FullLineBox text="Surname" />
-            <FullLineBox text="Given Name" />
-            <FullLineBox text="e-mail Address" />
-            <MentionContainer text="Sex" item={["Male", "Female"]} space />
-            {/*  */}
-            <MentionContainer
-              text="Marital Status"
-              item={["Married", "Single"]}
-              space
-            />
-            <FullLineBox text="Place of Birth" />
-            <MentionDashBoxes item={[2, 2, 4]} title="Date of Birth" />
-            <FullLineBox text="Nationality" />
-            <FullLineBox text="Home address in Pakistan" />
-            <FullLineBox text="City" />
-            <FullLineBox text="Province/State" />
-            <ContentOutline>
-              <Title>Mobile Phone Number</Title>
-              <Boxes>
-                <p>:</p>
-                <Box b={12} />
-              </Boxes>
-            </ContentOutline>
-            <MentionContainer
-              text="Occupation/Position"
-              item={[
-                "Professional",
-                "Government",
-                "Sales",
-                "Student",
-                "Housewife",
-                "Other",
-              ]}
-              space
-            />
-            <div className="w-full mb-1">
-              <ContentOutline>
-                <Title>Type of Business</Title>
-                <Boxes wf>
-                  <p>:</p>
-                  <input
-                    type="text"
-                    className="w-[420px] border-b border-black"
-                  />
-                </Boxes>
-              </ContentOutline>
-            </div>
-            <FullLineBox text="Name of Company" />
-            <div className="flex text-[8px] space-y-[2px] leading-[10px]">
-              <Title>Address in Pakistan</Title>
-
-              <div className="flex flex-col space-y-[2px]">
-                <Boxes>
-                  <p>:</p>
-                  <Box b={28} />
-                </Boxes>
-                <Boxes>
-                  <p>&nbsp;</p>
-                  <Box b={28} />
-                </Boxes>
-              </div>
-            </div>
-            <FullLineBox text="City" />
-            <FullLineBox text="Province/State" />
-            <DashBoxes item={[2, 2, 8]} title="Phone Number" />
-          </>
-          {/* ************END Heading PERSONAL DATA*********************** */}
-        </div>
-        <div className="h-[920px] border border-black w-full ps-4">
+        {page1()}
+        <div className="h-[860px] border border-black w-full ps-4">
           {/* ************Heading PASSPORT INFORMATION*********************** */}
           <>
             <Heading index={"III."} text="PASSPORT INFORMATION" />
@@ -452,10 +286,13 @@ const Form = () => {
               </div>
               <div className="italic font-semibold text-[8px] pt-1 space-y-1">
                 <p>
-                  Relation (s) :&nbsp; &nbsp; 1 : &nbsp; Husband &nbsp; &nbsp; 2 : &nbsp;  Wife  &nbsp;  &nbsp;   3 : &nbsp; Child
+                  Relation (s) :&nbsp; &nbsp; 1 : &nbsp; Husband &nbsp; &nbsp; 2
+                  : &nbsp; Wife &nbsp; &nbsp; 3 : &nbsp; Child
                 </p>
                 <p>
-                  Sex  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;:&nbsp; &nbsp; F : &nbsp; Female &nbsp; &nbsp; M : &nbsp;  Male
+                  Sex &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                  &nbsp;:&nbsp; &nbsp; F : &nbsp; Female &nbsp; &nbsp; M :
+                  &nbsp; Male
                 </p>
               </div>
             </div>
@@ -483,31 +320,37 @@ const Form = () => {
           <>
             <Heading index={"V."} text="MISCELLANEOUS" />
             <MentionContainer
+              space
               tspace
               text="Have you ever been to Indonesia before ?"
               item={["yes", "No"]}
             />
             <MentionContainer
+              space
               tspace
               text="Are you in possesion of any countries travel documents"
               item={["yes", "No"]}
             />
             <MentionContainer
+              space
               tspace
               text="Do you have previous visa to enter Indonesia ? "
               item={["yes", "No"]}
             />
             <MentionContainer
+              space
               tspace
               text="Have your visa application been denied before? "
               item={["yes", "No"]}
             />
             <MentionContainer
+              space
               tspace
               text="Have you been forced to leave Indonesia?"
               item={["yes", "No"]}
             />
             <MentionContainer
+              space
               tspace
               text="Have you ever been committed a crime or any Offence?"
               item={["yes", "No"]}
@@ -568,7 +411,8 @@ const Form = () => {
         </div>
         {/* ******End Signature lines************ */}
         {/* ---------------FOR OFFICE USE ONLY-------------------------------- */}
-        <div className=" border border-black w-full ps-4 py-1">
+
+        <div className=" h-[90px] border border-black w-full ps-4 mt-[1px]">
           <>
             <div className="pt-2  ">
               <div className="flex justify-between ">
@@ -591,11 +435,13 @@ const Form = () => {
                     <div className="flex space-x-6 ">
                       <ContentOutline>
                         <div className="flex">
-                          <h2 className="w-40">Lamanya Izin Tinggal di Indonesia</h2>
+                          <h2 className="w-40">
+                            Lamanya Izin Tinggal di Indonesia
+                          </h2>
                           <div className="flex items-center space-x-1">
                             <p className="me-3 ">:</p>
                             <Box b={4} />
-                            <span className="font-medium">  Hari/Bulan</span>
+                            <span className="font-medium"> Hari/Bulan</span>
                           </div>
                         </div>
                       </ContentOutline>
@@ -603,10 +449,11 @@ const Form = () => {
                     <div className="flex space-x-6 ">
                       <ContentOutline>
                         <div className="flex">
-                          <h2 className="w-40">Lamanya Izin Tinggal di Indonesia</h2>
+                          <h2 className="w-40">
+                            Lamanya Izin Tinggal di Indonesia
+                          </h2>
                           <div className="flex items-center space-x-1">
                             <p className="me-3 ">:</p>
-
                           </div>
                         </div>
                       </ContentOutline>
@@ -618,14 +465,12 @@ const Form = () => {
                   <p>A.N Kepala Perwakilan RI</p>
                   ..........................................
                 </div>
-
               </div>
             </div>
           </>
         </div>
         {/* ---------------End FOR OFFICE USE ONLY-------------------------------- */}
       </div>
-
     </Layout>
   );
 };
