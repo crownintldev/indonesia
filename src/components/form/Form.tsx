@@ -61,9 +61,12 @@ const page1 = () => {
             <MentionContainer
               space
               text="Type of Visa"
-              item={["Diplomatic", "Service/Official"]}
+              item={["Transit", "Single Visit"]}
             />
-            <MentionContainer space item={["Diplomatic", "Service/Official"]} />
+            <MentionContainer 
+             space 
+             item={["Multiple Visit", "Limited Stay"]} 
+            />
           </div>
           {/* image */}
           <div className="w-28 h-auto me-[14px]">
