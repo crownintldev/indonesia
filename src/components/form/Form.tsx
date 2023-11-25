@@ -206,6 +206,7 @@ const Form = () => {
     <Layout>
       <div className="w-full flex flex-col relative">
         {page1()}
+        <div className="py-2"></div>
         <div className="h-[860px] border border-black w-full ps-4">
           {/* ************Heading PASSPORT INFORMATION*********************** */}
           <>
