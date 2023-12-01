@@ -14,10 +14,10 @@ import {
   ContentOutline,
   Layout,
 } from "./function";
-
+// h-[940px]
 const page1 = () => {
   return (
-    <div className="h-[940px] border border-black w-full ps-4 pt-1">
+    <div className=" border border-black w-full ps-4 pt-1 pb-1">
       {/* ------------------top picture section------------------------------- */}
       <>
         {/* Date */}
@@ -63,10 +63,7 @@ const page1 = () => {
               text="Type of Visa"
               item={["Transit", "Single Visit"]}
             />
-            <MentionContainer 
-             space 
-             item={["Multiple Visit", "Limited Stay"]} 
-            />
+            <MentionContainer space item={["Multiple Visit", "Limited Stay"]} />
           </div>
           {/* image */}
           <div className="w-28 h-auto me-[14px]">
@@ -178,7 +175,7 @@ const page1 = () => {
           </ContentOutline>
         </div>
         <FullLineBox text="Name of Company" />
-        <div className="flex text-[8px] space-y-[2px] leading-[10px]">
+        <ContentOutline>
           <Title>Address in Pakistan</Title>
 
           <div className="flex flex-col space-y-[2px]">
@@ -191,7 +188,7 @@ const page1 = () => {
               <Box b={28} />
             </Boxes>
           </div>
-        </div>
+        </ContentOutline>
         <FullLineBox text="City" />
         <FullLineBox text="Province/State" />
         <DashBoxes item={[2, 2, 8]} title="Phone Number" />
@@ -204,10 +201,10 @@ const Form = () => {
   // %%%%%%%%%%%%%%%%%main function%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   return (
     <Layout>
-      <div className="w-full flex flex-col relative">
+      <div className="w-full flex flex-col relative ">
         {page1()}
         <div className="py-2"></div>
-        <div className="h-[860px] border border-black w-full ps-4">
+        <div className="border border-black w-full ps-4 pb-1">
           {/* ************Heading PASSPORT INFORMATION*********************** */}
           <>
             <Heading index={"III."} text="PASSPORT INFORMATION" />
@@ -225,7 +222,7 @@ const Form = () => {
               item={["Personal", "Family"]}
               space
             />
-            <div className="mt-1 space-y-1">
+            <div className="mt-1 space-y-1 ml-2">
               <p className="font-medium text-[8px] leading-[10px] italic">
                 Please mention if your husband/wife/children are accompanying
                 you and have been entered in your travel document
@@ -244,7 +241,7 @@ const Form = () => {
                   </div>
                 </ContentOutline>
                 <ContentOutline>
-                  <div className="flex flex-col justify-center items-center">
+                  <div className="flex flex-col  justify-center items-center">
                     <p className="font-medium">Relative(s) :</p>
                     <div className="space-y-1">
                       <Box b={1} />
@@ -280,15 +277,15 @@ const Form = () => {
                   <div className="flex flex-col ">
                     <p className="font-medium">Name:</p>
                     <div className="space-y-1">
-                      <Box b={21} />
-                      <Box b={21} />
-                      <Box b={21} />
-                      <Box b={21} />
+                      <Box b={19} />
+                      <Box b={19} />
+                      <Box b={19} />
+                      <Box b={19} />
                     </div>
                   </div>
                 </ContentOutline>
               </div>
-              <div className="italic font-semibold text-[8px] pt-1 space-y-1">
+              <div className="italic font-semibold text-[10px] pt-1 space-y-1">
                 <p>
                   Relation (s) :&nbsp; &nbsp; 1 : &nbsp; Husband &nbsp; &nbsp; 2
                   : &nbsp; Wife &nbsp; &nbsp; 3 : &nbsp; Child
@@ -370,11 +367,11 @@ const Form = () => {
 
           {/* ******Signature lines************ */}
           <>
-            <div className="pt-1 space-y-2">
+            <div className="pt-1 space-y-2 ml-2">
               <p className="font-medium text-[8px] leading-[10px]">
                 I, hereby declare that the statements given above are true.
               </p>
-              <h1 className="font-semibold text-[14px] ">
+              <h1 className="font-semibold text-[12px] leading-[30px]">
                 I realize that even though I posses a valid visa to Indonesia,
                 permission for entry remains at the discretion of the
                 immigration authoritis in Indonesia.
@@ -416,9 +413,9 @@ const Form = () => {
         {/* ******End Signature lines************ */}
         {/* ---------------FOR OFFICE USE ONLY-------------------------------- */}
 
-        <div className=" h-[90px] border border-black w-full ps-4 mt-[1px]">
+        <div className=" h-[95px] border border-black w-full ps-4 mt-[1px] ">
           <>
-            <div className="pt-2  ">
+            <div className="pt-2  ml-2 pb-2">
               <div className="flex justify-between ">
                 <div className="space-y-2">
                   <h1 className="text-[12px] font-bold underline underline-offset-4">
@@ -464,10 +461,12 @@ const Form = () => {
                     </div>
                   </div>
                 </div>
-                <div className="text-[10px] font-medium w-[150px] flex flex-col items-center ">
-                  <p>Karachi, ............................</p>
-                  <p>A.N Kepala Perwakilan RI</p>
-                  ..........................................
+                <div className="h-[70px]  flex flex-col  items-center justify-between text-[10px] font-medium w-[180px] ">
+                  <div>
+                    <p>Karachi, ..........................................</p>
+                    <p>A.N Kepala Perwakilan RI</p>
+                  </div>
+                  <div>.........................................................</div>
                 </div>
               </div>
             </div>

@@ -122,13 +122,13 @@ const Title = ({
   </div>
 );
 const HeadingItalic = ({ text }: { text: string }) => (
-  <h4 className=" font-bold text-[9px] italic mt-1">{text}</h4>
+  <h4 className=" font-bold text-[12px] italic mt-1">{text}</h4>
 );
 
 const Heading = ({ index, text }: { index: string; text: string }) => (
-  <div className="flex relative uppercase items-center text-[9px] mt-1">
+  <div className="flex relative uppercase items-center text-[12px] mt-1">
     <span className="absolute -left-3 font-bold">{index}</span>
-    <h4 className=" font-bold  ">{text}</h4>
+    <h4 className=" font-bold  ml-2">{text}</h4>
   </div>
 );
 const Boxes = ({
@@ -148,16 +148,16 @@ const Boxes = ({
   </div>
 );
 const ContentOutline = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex items-center text-[8px] space-y-[5px] leading-[10px]">
+  <div className="ml-2 flex items-center text-[10px] space-y-[3px] leading-[10px]">
     {children}
   </div>
 );
 const Layout = ({ children }: { children: React.ReactNode }) => (
-  <div className="w-[610px] mx-auto space-y-[1px] ">
+  <div className="w-[780px] mx-auto space-y-[1px] ">
     <div className="border border-black pb-1 py-2">
       <div className="ms-[2.5%] h-16 mx-auto  relative">
         <Header />
-        <p className="absolute text-[10px] font-medium bottom-[1px]">NOREG</p>
+        <p className="absolute text-[12px] font-medium bottom-[1px]">NOREG</p>
       </div>
     </div>
     {/* line on header below */}

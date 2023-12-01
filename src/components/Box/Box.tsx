@@ -49,7 +49,7 @@ const Box = ({ b }) => {
         <input
           ref={singleInputRef}
           type="text"
-          className="single-input text-[15px]"
+          className="single-input text-[20px]"
           onChange={handleSingleInputChange}
           onBlur={handleSingleInputBlur}
           maxLength={b}
@@ -61,7 +61,7 @@ const Box = ({ b }) => {
             key={index}
             ref={(el) => inputRefs.current[index] = el}
             type="text"
-            className={`text-center border font-medium border-gray-800 d-block w-[15px] h-[15px] `}
+            className={`text-center border font-medium border-gray-800 d-block w-[20.8px] h-[20px] `}
 
             value={value}
             onFocus={() => focusSingleInput(index)}
